@@ -55,23 +55,23 @@ year.addEventListener('change', e => {
 
 maximo.addEventListener('change', e => {
     datosBusqueda.max = e.target.value;
-
+    filtrarAuto();
 });
 
 minimo.addEventListener('change', e => {
     datosBusqueda.min = e.target.value;
-
+    filtrarAuto();
 
 });
 
 puertas.addEventListener('change', e => {
     datosBusqueda.puertas = e.target.value;
-
+    filtrarAuto();
 });
 
 transmision.addEventListener('change', e => {
     datosBusqueda.transmision = e.target.value;
-
+    filtrarAuto();
 });
 
 color.addEventListener('change', e => {
@@ -119,7 +119,7 @@ function llenarSelect() {
 }
 
 function filtrarAuto() {
-    const resultado = autos.filter(filtrarMarca).filter(filtrarAño).filter(filtrarColor);
+    const resultado = autos.filter(filtrarMarca).filter(filtrarAño).filter(filterminimo).filter(filtermaximo).filter(filterpuertas).filter(filtertransmision).filter(filtrarColor);
 
     // console.log(resultado);
     mostrarAutos(resultado);
@@ -139,6 +139,35 @@ function filtrarAño(auto) {
     } return auto;
 }
 
+function filterminimo (auto) {
+    const { min } = datosBusqueda;
+    if (min) { 
+        return auto.precio >= min;
+    }
+     return auto;
+}
+
+function filtermaximo (auto) {
+    const { max } = datosBusqueda;
+    if (max) { 
+        return auto.precio <= max;
+    }
+     return auto;
+}
+
+function filterpuertas(auto) {
+    const {puertas } = datosBusqueda;
+    if (puertas) {
+        return auto.puertas === parseInt(puertas);
+    } return auto;
+}
+
+function filtertransmision(auto) {
+    const {transmision } = datosBusqueda;
+    if (transmision) {
+        return auto.transmision === transmision;
+    } return auto;
+}
 
 function filtrarColor(auto) {
     const { color } = datosBusqueda;
