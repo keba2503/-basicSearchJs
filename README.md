@@ -1,2 +1,1 @@
-"" 
-"" 
+Basic search engine JavaScript
