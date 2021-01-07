@@ -1,4 +1,4 @@
-//Variables
+//Variables selectores
 const marca = document.querySelector('#marca');
 const year = document.querySelector('#year');
 const maximo = document.querySelector('#max');
@@ -7,39 +7,38 @@ const puertas = document.querySelector('#puertas');
 const transmision = document.querySelector('#transmision');
 const color = document.querySelector('#color')
 
-//contenedor de los resultados
-const resultado = document.querySelector('#resultado');
-
 const max = new Date().getFullYear();
 const min = max - 10; 
 
+//div contenedor de los resultados
+const resultado = document.querySelector('#resultado');
+
+
+
+//Objeto  de resultado de busqueda
 
 const datosBusqueda = {
     marca: '',
     min: '',
-    max:'',
+    max: '',
     year: '',
-    puertas:'',
+    puertas: '',
     transmision: '',
     color: '',
-    
 }
 
-
-
 //Eventos
+//al abrir el documento
 document.addEventListener('DOMContentLoaded', () => {
     mostrarAutos(autos);
 
-
     //Llenar select años
-
     llenarSelect();
 
 });
 
 
-//Eventos para los selects de busqueda
+//Eventos para los selects de busqueda change funciona en los selects porque si se cambia la opcion se activa el evento.
 
 marca.addEventListener('change', e => {
     datosBusqueda.marca = e.target.value;
